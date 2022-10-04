@@ -1,27 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-
-https://maven.apache.org/xsd/settings-1.0.0.xsd">
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0     http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
     <localRepository>E:\project\repository</localRepository>
 
-    <interactiveMode/>
+    <pluginGroups>
+    </pluginGroups>
 
-    <offline/>
+    <proxies>
+    </proxies>
 
-    <pluginGroups/>
+    <servers>
+    </servers>
 
-    <servers/>
+    <mirrors>
+        <mirror>
+            <id>aliyunmaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>Nexus aliyun</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </mirror>
+    </mirrors>
 
-    <mirrors/>
+    <profiles>
+        <profile>
+            <id>ali_spring</id>
+            <repositories>
+                <repository>
+                    <id>maven-central</id>
+                    <url>https://maven.aliyun.com/nexus/content/repositories/central</url>
+                </repository>
 
-    <proxies/>
+                <repository>
+                    <id>maven-jcenter</id>
+                    <url>https://maven.aliyun.com/nexus/content/repositories/jcenter</url>
+                </repository>
 
-    <profiles/>
+                <repository>
+                    <id>maven-google</id>
+                    <url>https://maven.aliyun.com/nexus/content/repositories/google</url>
+                </repository>
 
-    <activeProfiles/>
+                <repository>
+                    <id>maven-gradle-plugin</id>
+                    <url>https://maven.aliyun.com/nexus/content/repositories/gradle-plugin</url>
+                </repository>
 
+                <repository>
+                    <id>maven-spring</id>
+                    <url>https://maven.aliyun.com/nexus/content/repositories/spring</url>
+                </repository>
+
+                <repository>
+                    <id>maven-spring-plugin</id>
+                    <url>https://maven.aliyun.com/nexus/content/repositories/spring-plugin</url>
+                </repository>
+
+                <repository>
+                    <id>maven-grails-core</id>
+                    <url>https://maven.aliyun.com/nexus/content/repositories/grails-core</url>
+                </repository>
+
+                <repository>
+                    <id>maven-apache-snapshots</id>
+                    <url>https://maven.aliyun.com/nexus/content/repositories/apache-snapshots</url>
+                </repository>
+
+            </repositories>
+        </profile>
+
+        <profile>
+            <id>ali_apache</id>
+            <repositories>
+            </repositories>
+        </profile>
+
+    </profiles>
 </settings>
