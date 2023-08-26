@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>ocean</artifactId>
-        <groupId>com.weiwangze.it</groupId>
+        <groupId>com.ocean.it</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -13,21 +13,35 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.weiwangze.it</groupId>
+            <groupId>com.ocean.it</groupId>
             <artifactId>baseapi</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
-            <groupId>com.weiwangze.it</groupId>
-            <artifactId>baseservice</artifactId>
+            <groupId>com.ocean.it</groupId>
+            <artifactId>baseimpl</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
-            <groupId>com.weiwangze.it</groupId>
+            <groupId>com.ocean.it</groupId>
+            <artifactId>businessapi</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ocean.it</groupId>
+            <artifactId>businessimpl</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ocean.it</groupId>
             <artifactId>web</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>

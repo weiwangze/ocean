@@ -1,0 +1,249 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <style type="text/css">
+        .btnBig {
+            width: 100px;
+            height: 35px;
+            background-color: #23e8e8;
+            position: absolute;
+            left: 45%;
+            top: 45%;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: 0.5s;
+        }
+
+        .btnBig:hover {
+            background-color: #1dc7c7;
+        }
+
+        .btnStart {
+            padding-top: 6px;
+            padding-left: 32px;
+            letter-spacing: 4px;
+        }
+
+        .picShow {
+            transition: 3s;
+            background-color: black;
+            width: 0%;
+            height: 0%;
+            position: relative;
+        }
+
+        .yanhua_canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wenan {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        .wenan img {
+            width: 250px;
+            height: 400px;
+            box-shadow: 5px 5px 10px pink;
+            opacity: 0;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transition: 2s;
+        }
+
+        .wenan .font {
+            color: pink;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 20px;
+            opacity: 0;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 500px;
+            transition: 2s;
+        }
+
+        .step {
+            z-index: 999;
+            position: relative;
+        }
+
+        .i {
+            top: 10%;
+            left: 90%;
+            position: absolute;
+            color: blue;
+            font-weight: bold;
+            border-radius: 20px;
+            background-color: #f2c7f7;
+            width: 100px;
+            height: 20px;
+            text-align: center;
+            z-index: 99999;
+        }
+    </style>
+    <!-- 引入Ocean框架 -->
+    <script type="text/javascript" src="/ocean/ocean/import/ocean.js"></script>
+    <script type="text/javascript" src="js/yanhua.js"></script>
+    <script type="text/javascript">
+        var s = "pic/";
+        var pics = [];
+        for (i = 1; i < 21; i++) {
+            sparkPic = new Image();
+            sparkPic.src = s + "pic (" + i + ").jpg";
+            pics.push(sparkPic);
+        }
+
+        function start() {
+
+            // 隐藏按钮
+            $("#btnBig").hide();
+            $(".picShow").cssList({
+                width: "100%",
+                height: "100%",
+            });
+
+            // 启动烟花特效
+            setTimeout(function () {
+                initVars();
+                frame();
+
+                /*
+                // 开始播放音乐
+                var audio = document.getElementById("audios");
+                audio.play();
+
+                // 启动文案播放
+                setTimeout(wenan1, 2000);
+                */
+
+            }, 3000);
+
+        }
+
+        function wenan1() {
+            // 启动文案播放
+            //var s="pic/";
+
+            var fonts = [
+                "心儿,我想告诉你",
+                "你一直在我心里",
+                "对你的爱已经无法用语言表达",
+                "我想要大声的告诉你",
+                "我爱你🌹🌹🌹",
+                "我的小可爱",
+                "我的小猪猪",
+                "我的挚爱",
+                "END"];
+
+            var curIndex = 0;
+            // 文字是否左滑
+            var isLeft = false;
+
+            var wenanInterval;
+
+            function wenan_start() {
+                // 计算随机位置(百分比)
+                var height = document.body.clientHeight;
+                var width = document.body.clientWidth;
+                var positionFontX = Ocean.Util.Common.getRandom(0, width - 500);
+                var positionFontY = Ocean.Util.Common.getRandom(0, height / 2 - 40);
+                var positionImgX = Ocean.Util.Common.getRandom(0, width - 250);
+                var positionImgY = Ocean.Util.Common.getRandom(height / 2, height - 500);
+                var positionFontOffset = ((width / 2) < positionFontX) ? -40 : 40;
+                var positionImgOffset = ((width / 2) < positionImgX) ? -40 : 40;
+
+
+                // 文字赋值
+                $(".step1 .font").html((fonts[curIndex] || "")).cssList({
+                    "letter-spacing": "3px",
+                    "font-size": "20px",
+                    left: positionFontX,
+                    top: positionFontY
+                });
+
+                // 图片赋值
+                $(".step1 .pic").html(pics[curIndex]).cssList({
+                    left: positionImgX,
+                    top: positionImgY
+                });
+                $(".step1 img").html(pics[curIndex]).cssList({
+                    left: positionImgX,
+                    top: positionImgY
+                });
+
+                // 开始
+                setTimeout(function () {
+                    // 文字效果
+                    $(".step1 .font").cssList({
+                        "letter-spacing": "8px",
+                        "font-size": "25px",
+                        opacity: 1,
+                        left: (positionFontX + positionFontOffset),
+                        top: positionFontY
+                    });
+
+                    // 图片效果
+                    $(".step1 img").cssList({
+                        opacity: 1,
+                        left: (positionImgX + positionImgOffset),
+                        top: positionImgY
+                    });
+                }, 3000);
+
+                // 结束
+                setTimeout(function () {
+                    // 文字效果
+                    $(".step1 .font").cssList({
+                        opacity: 0
+                    });
+
+                    // 图片效果
+                    $(".step1 img").cssList({
+                        opacity: 0
+                    });
+                }, 7000);
+
+                curIndex++;
+                if (curIndex == pics.length) {
+                    curIndex = 1;
+                    clearInterval(wenanInterval);
+                    Yanhua.send = 15;
+                    wenan2();
+                }
+            }
+
+            wenanInterval = setInterval(wenan_start, 10000);
+        }
+
+        function wenan2() {
+
+        }
+    </script>
+
+</head>
+<body style="margin: 0px;position: relative;">
+<audio autoplay="autopaly" loop="loop" controls="controls" id="audios" style="display:none;">
+    <!--<source src="music\Blue Stahli - Shotgun Senorita.mp3" type="audio/mp3"/>-->
+    <source src="music\nibuyaoxiangqiwo.mp3" type="audio/mp3"/>
+</audio>
+<div class="i">设计 By 泽</div>
+<div id="btnBig" class="btnBig">
+    <div class="btnStart" onclick="start();">开始</div>
+</div>
+<div class="picShow">
+    <canvas id="canvas" class="yanhua_canvas"></canvas>
+    <div class="wenan">
+        <!-- 步骤1:文字图片联合阶段 -->
+        <div class="step step1">
+            <div class="font"></div>
+            <div class="pic"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

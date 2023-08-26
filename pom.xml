@@ -6,19 +6,15 @@
     <packaging>pom</packaging>
     <modules>
         <module>baseapi</module>
-        <module>baseservice</module>
+        <module>baseimpl</module>
+        <module>businessapi</module>
+        <module>businessimpl</module>
         <module>start</module>
         <module>web</module>
     </modules>
 
-    <!-- SpringBoot父类 -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.7</version>
-    </parent>
 
-    <groupId>com.weiwangze.it</groupId>
+    <groupId>com.ocean.it</groupId>
     <artifactId>ocean</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -26,6 +22,13 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
+    <!-- SpringBoot父类 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.7</version>
+    </parent>
 
     <dependencies>
 
@@ -65,6 +68,7 @@
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
 
+        <!-- 编译时自动生成实体类的setter,getter方法 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -73,6 +77,19 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <!-- MyBatis组件 -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <!-- oracle驱动 -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
         </dependency>
 
     </dependencies>

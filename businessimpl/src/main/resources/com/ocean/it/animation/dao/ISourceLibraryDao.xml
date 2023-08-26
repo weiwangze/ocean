@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ocean.it.animation.dao.ISourceLibraryDao">
+
+    <select id="findSourceLibraryList" resultType="com.ocean.it.animation.vo.SourceLibraryVO">
+        SELECT SLT.ID               id,
+               SLT.SOURCE_TYPE      sourceType,
+               SLT.SOURCE_LABEL     sourceLabel,
+               SLT.SOURCE_NAME      sourceName,
+               SLT.ATTACHMENT_ID    attachmentId,
+               SLT.SOURCE_WIDTH     sourceWidth,
+               SLT.SOURCE_HEIGHT    sourceHeight,
+               SLT.SOURCE_FORMAT    sourceFormat,
+               SLT.STATUS           status,
+               SLT.CREATE_DATE      createDate,
+               SLT.CREATE_BY        createBy,
+               SLT.LAST_UPDATE_DATE lastUpdateDate,
+               SLT.LAST_UPDATE_BY   lastUpdateBy
+        FROM SOURCE_LIBRARY_T SLT
+    </select>
+</mapper>
+
